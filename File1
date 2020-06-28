@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.*;
+
+class Dictionary {
+  public static void main(String[] args)
+  throws java.io.IOException {
+
+    Scanner sc = new Scanner(System.in);
+    String a, quit = "quit";
+    int liczba_slow = 20;
+    String wordlist[][] = new String[liczba_slow][2];
+
+    int k = 0;
+
+    for(int i = 0; i < liczba_slow; i++) {
+      for (int j = 0; j < 2; j++, k++)
+      wordlist[i][j] = args[k];
+    }
+
+      loop: for(;;) {
+              for(int x = wordlist.length - 1; x >= 0; x--) {
+                      System.out.print(wordlist[x][0] + " : ");
+
+                      a = sc.nextLine();
+                      if(a.equals(quit)) break loop;
+                      if(wordlist[x][1].equals(a)) System.out.println();
+                      else {
+                        System.out.println(" --- Źle, prawidłowe słowo to: " + wordlist[x][1] + " ---");
+                        continue;
+                      }
+                }
+
+                for(int x = 0; x < wordlist.length; x++) {
+                  System.out.print(wordlist[x][1] + " : ");
+
+                  a = sc.nextLine();
+                  if(a.equals(quit)) break loop;
+                  if(wordlist[x][0].equals(a)) System.out.println();
+                  else {
+                    System.out.println(" --- Źle, prawidłowe słowo to: " + wordlist[x][0] + " ---");
+                    continue;
+                  }
+                }
+            }
+  }
+}
